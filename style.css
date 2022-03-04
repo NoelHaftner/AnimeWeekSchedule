@@ -1,0 +1,59 @@
+@font-face {
+	font-family: "Roboto-Regular"
+	src: url(Roboto-Regular.ttf);
+}
+
+body {
+	background-color: #2C3E50;
+}
+
+h1 {
+	float: center;
+	text-align: center;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.Wbutton {
+	text-align: center;
+	padding-left: 3em;
+	padding-right: 3em;
+	padding-top: 1.8em;
+	padding-bottom: 1.8em;
+	margin-left: 1em;
+	margin-right: 1em;
+	border-radius: 100%;
+	background-color: #16A085;
+}
+
+#selected {
+	background-color: green;
+}
+
+.entry {
+	overflow: auto;
+	display: flex;
+	background-color: gray;
+	align-content: center;
+}
+
+.photo img {
+	background-color: blue;
+	height: 10em;
+}
+
+.details p {
+	background-color: purple;
+	font-family: "Roboto-Regular";
+	margin-top: 0px;
+	margin-bottom: .81em;
+	text-align: center;
+}
