@@ -22,7 +22,7 @@ class anime {
 
 function getData(day)
 {
-	fetch("Cache.txt").then(responce => responce.json()).then(json => console.log(json));
+	fetch("http://animeweek.live/cacheTemp.json").then(responce => responce.json()).then(json => console.log(json));
 	clearData();
 	fetch('https://api.jikan.moe/v4/schedules/' + day)
 	.then(responce => responce.json())
@@ -31,7 +31,6 @@ function getData(day)
 
 function PopulateEntries(data)
 {
-	console.log(data);
 	const Entries = [];
 	for (var i = data.data.length - 1; i >= 0; i--) {
 		var entry = new anime(data.data[i].images.webp.image_url, data.data[i].title, data.data[i].episodes, data.data[i].broadcast.time);
@@ -43,35 +42,36 @@ function PopulateEntries(data)
 
 	for (let i = 0; i < Entries.length; i++) 
 	{
-		console.log(Entries[i].title + " is @ ")
 		CreateEntry(Entries[i]);
 	}
 
-	console.log("cleaning unnescasery hours");
-	for(var i = 0; i < 23; i++)
+	for(var i = 0; i < 24; i++)
 	{
 		let num = i;
 		if (num < 10) {num = '0' + i.toString();}
-		let hour = document.getElementById(num + '00');
-		console.log(hour);
+		let hour = document.getElementById(num);
 		if (hour.children.length < 2)
 		{
 			hour.style.display = 'none';
 		}
 	}
-	console.log("done!")
 }
 
 function clearData()
 {
 	const elements = document.getElementsByClassName("entry");
-	console.log("Removing:");
-	for (var i = elements.length - 1; i >= 0; i--) {
-		console.log(elements[i].textContent);
-	}
+
 	while(elements.length > 0)
 	{
 		elements[0].parentNode.removeChild(elements[0]);
+	}
+
+	for(var i = 0; i < 23; i++)
+	{
+		let num = i;
+		if (num < 10) {num = '0' + i.toString();}
+		let hour = document.getElementById(num);
+		hour.style.display = 'block';
 	}
 }
 
@@ -105,7 +105,6 @@ function CreateEntry(Entry)
 	entry.appendChild(details);
 
 	let entryPoint = document.getElementById(SelectTimeDiv(Entry.getTimeFormatted23()));
-	console.log(entryPoint);
 	entryPoint.appendChild(entry);
 }
 
@@ -158,10 +157,6 @@ function SelectTimeDiv(time)
 		return "Unknown";
 	}
 	let copy = time.substring(0, 2);
-	console.log("splitting " + time + " to: " + copy);
-	if(copy < 10) {'0' + copy.toString();}
-	copy = copy + '00';
-	console.log(copy);
 	return copy;
 }
 

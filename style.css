@@ -1,10 +1,10 @@
 @font-face {
-	font-family: "Roboto-Regular"
+	font-family: "Roboto-Regular";
 	src: url(Roboto-Regular.ttf);
 }
 
 body {
-	background-color: #2C3E50;
+	background-color: rgb(197, 197, 197);
 }
 
 h1 {
@@ -42,16 +42,22 @@ ul {
 	overflow: auto;
 	display: flex;
 	background-color: gray;
-	align-content: center;
+	justify-content: center;
+
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+	border-radius: 69px;
+	background: linear-gradient(145deg, #cacaca, #f0f0f0);
+	box-shadow:  33px 33px 65px #bebebe,
+             -33px -33px 65px #ffffff;
 }
 
 .photo img {
-	background-color: blue;
 	height: 10em;
 }
 
 .details p {
-	background-color: purple;
 	font-family: "Roboto-Regular";
 	margin-top: 0px;
 	margin-bottom: .81em;
